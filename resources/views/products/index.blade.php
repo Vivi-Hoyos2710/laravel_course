@@ -14,7 +14,7 @@
 
 <div class="card">
 
-<img src="https://laravel.com/img/logotype.min.svg" class="card-img-top img-card">
+    <img src="{{ asset('/img/'.$product["img"]) }}" class="card-img-top img-card"> 
 
 <div class="card-body text-center">
 

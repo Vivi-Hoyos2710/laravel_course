@@ -21,11 +21,14 @@
 <div class="card-body">
 
 <h5 class="card-title">
-
-{{ $viewData["product"]["name"] }}
-
+{{ $viewData["product"]["name"] }} 
 </h5>
-
+<h6 class="card-subtitle mb-2 text-muted">Price: 
+    @if ($viewData["product"]["price"]>100)
+    <p class="text-danger">{{$viewData["product"]["price"]}}</h6></p>
+    @else
+    {{$viewData["product"]["price"]}}
+    @endif
 <p class="card-text">{{ $viewData["product"]["description"] }}</p>
 
 </div>
