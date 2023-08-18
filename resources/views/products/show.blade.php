@@ -29,7 +29,11 @@
     @else
     {{$viewData["product"]["price"]}}
     @endif
-<p class="card-text">{{ $viewData["product"]["description"] }}</p>
+<p class="card-text">
+    @foreach($viewData["product"]->comments as $comment) 
+    - {{ $comment->getDescription() }}<br /> 
+    @endforeach
+</p>
 
 </div>
 
