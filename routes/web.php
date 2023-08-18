@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +12,13 @@ use App\Http\Controllers\ProductController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [HomeController::class,'index'])->name("home.index");
-Route::get('/about', [HomeController::class,'about'])->name("home.about");
-Route::get('/products', [ProductController::class,'index'])->name("products.index");
-Route::get('/products/create', [ProductController::class,'create'])->name("product.create");
-Route::post('/products/save', [ProductController::class,'save'])->name("product.save");
-Route::get('/products/{id}', [ProductController::class,'show'])->name("products.show");
+Route::controller('App\Http\Controllers\HomeController')->group(function () {
+    Route::get('/', 'index')->name('home.index');
+    Route::get('/about', 'about')->name('home.about');
+});
+Route::controller('App\Http\Controllers\ProductController')->group(function () {
+    Route::get('/products', 'index')->name('products.index');
+    Route::get('/products/create', 'create')->name('product.create');
+    Route::post('/products/save', 'save')->name('product.save');
+    Route::get('/products/{id}', 'show')->name('products.show');
+});
