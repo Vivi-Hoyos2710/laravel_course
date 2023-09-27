@@ -43,7 +43,7 @@ class ProductController extends Controller
     public function create(): View
     {
 
-        $viewData = []; //to be sent to the view
+        $viewData = []; 
 
         $viewData['title'] = 'Create product';
 
@@ -60,7 +60,6 @@ class ProductController extends Controller
             'price' => 'required|gt:0',
         ]);
         Product::create($request->only(['name', 'price']));
-        //dd($request->all()); => dump and die, muestra la info para debugerar y mata procesos?, si mata la ejecucion del script
         $viewData['title'] = 'Creating product: '.$request['name'];
         $viewData['subtitle'] = 'Creation status';
         $viewData['header'] = 'Created,Well Done!';
@@ -68,7 +67,6 @@ class ProductController extends Controller
 
         return view('products.success')->with('viewData', $viewData);
 
-        //here will be the code to call the model and save it to the database
 
     }
 }
